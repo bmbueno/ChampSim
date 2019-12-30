@@ -1,0 +1,71 @@
+Sobre as aplicações e seus testes:
+
+Aplicação: 450.soplex-92B.champsimtrace.xz
+	- Linguagem: C++, OO !!
+	- Categoria: Linear Programming, Optimization
+	- Página com infos: https://www.spec.org/cpu2006/Docs/450.soplex.html
+	- Resumo:
+		- Emprega algoritmos para algebra linear esparsa (fatorização LU e algumas rotinas de solução apropriadas)
+	- Porque?
+		Pela disponibilidade dos dados na memoria, por se tratar de uma matriz esparsa os dados estão dispostos de maneira contigua na mem. 
+	- Faz muita diferença? 
+		Prefetch - Não
+		Branch predictor - Não
+		Replacement - Sim
+
+********************************************************************************************************************************************************
+Aplicação: 458.sjeng-1088B.champsimtrace.xz
+	- Linguagem: C
+	- Categoria: Artificial Intelligence: chess
+	- Página com infos: https://www.spec.org/auto/cpu2006/Docs/458.sjeng.html
+	- Resumo:
+		- O 458.sjeng é um programa que joga xadrez e várias variantes de xadrez, como o xadrez (semelhante ao Shogi) e o xadrez 'loser'.
+		Ele tenta encontrar a melhor jogada através de uma combinação de pesquisas alfa-beta ou de árvore com números à prova de prioridade, ordenação avançada de movimentações, avaliação posicional e 			heurística de remoção direta . 
+	- Porque?
+		- Por se tratar de uma IA que realiza varios testes e comparações para resolução do problema, sendo composto basicamente de ifelses que afetam a previsibilidade das instruções pelo processador. 
+	- Faz muita diferença? 
+		Prefetch - sim
+		Branch predictor - sim
+		Replacement - sim
+********************************************************************************************************************************************************
+Aplicação: 625.x264_s-20B.champsimtrace.xz	
+	- Linguagem: C
+	- Categoria: Video compression
+	- Página com infos: https://www.spec.org/cpu2017/Docs/benchmarks/625.x264_s.html
+	- Resumo:
+		O x264 é uma biblioteca de aplicativos e aplicativos gratuitos para codificação de fluxos de vídeo no formato H.264 / MPEG-4 AVC. x264 é distribuído e mantido pelo projeto VideoLan
+	- Porque?
+		Pela disponibilidade dos dados na mem e pela alta densidade de dados a serem manipulados, além de laços "comportados" 
+	- Faz muita diferença? 
+		Prefetch - nao
+		Branch predictor - nao
+		Replacement - sim
+********************************************************************************************************************************************************
+Aplicação: 638.imagick_s-4128B.champsimtrace.xz
+	- Linguagem: C
+	- Categoria: Image manipulation
+	- Página com infos: https://www.spec.org/cpu2017/Docs/benchmarks/638.imagick_s.html
+	- Resumo:
+		- ImageMagick é um conjunto de software para criar, editar, compor ou converter imagens de bitmap. A versão de benchmark SPEC CPU®2017 usa o componente convertido do ImageMagick para executar 		várias transformações nas imagens de entrada.
+	- Porque?
+		Pela disponibilidade dos dados na memoria, pois trata-se de uma imagem, assim seus dados sao dispostos contiguamente na mem., respeitam um padrão de acesso e ainda há maior controle dos laços 		para realização das operações (sem necessidade de previsões de instruções pelo processador)
+	- Faz muita diferença? 
+		Prefetch - nao
+		Branch predictor - nao
+		Replacement - nao
+********************************************************************************************************************************************************
+Aplicação: 648.exchange2_s-1712B.champsimtrace.xz
+	- Linguagem: Fortran
+	- Categoria: Artificial Intelligence: recursive solution generator (Sudoku)
+	- Página com infos: https://www.spec.org/cpu2017/Docs/benchmarks/648.exchange2_s.html
+	- Resumo:
+		- Este programa foi escrito para o desenvolvimento de quebra-cabeças não triviais de 9x9 sudoku. Tem sido amplamente utilizado em competições informais, que duram dias. Aliás, ele testa muitos 			recursos de manipulação de matriz do Fortran 95 (incluindo algumas funções intrínsecas) para uso com matrizes inteiras. Excepcionalmente, ele depende muito da recursão (até oito níveis de 			profundidade).
+	- Porque?
+		- Varios motivos, entre eles: 
+			- realiza várias instruções com dados dispostos contiguamente na memória (matriz do sudoku), possível analise na busca de dados da mem.
+			- realiza varias instruções de teste e comparação afetando a previsibilidade do processador
+			- utiliza recursão, não lembro oq muda no PC (checar para completar no relatorio)
+	- Faz muita diferença? 
+		Prefetch - sim
+		Branch predictor - sim
+		Replacement - sim
