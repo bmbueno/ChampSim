@@ -1,1 +1,7 @@
 trab_traces/
+bin/
+obj/
+obj/
+*.o
+*.d
+obj/
