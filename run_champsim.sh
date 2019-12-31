@@ -1,5 +1,7 @@
 #!/bin/bash
 
+datainicial=`date +%s`
+
 if [ "$#" -lt 4 ]; then
     echo "Illegal number of parameters"
     echo "Usage: ./run_champsim.sh [BINARY] [N_WARM] [N_SIM] [TRACE] [OPTION]"
@@ -43,3 +45,9 @@ fi
 
 mkdir -p results_${N_SIM}M
 ./bin/${BINARY} -warmup_instructions ${N_WARM}000000 -simulation_instructions ${N_SIM}000000 ${OPTION} -traces ${TRACE_DIR}/${TRACE} &> results_${N_SIM}M/${TRACE}-${BINARY}${OPTION}.txt
+
+datafinal=`date +%s`
+soma=`expr $datafinal - $datainicial`
+resultado=`expr 10800 + $soma`
+tempo=`date -d @$resultado +%H:%M:%S`
+echo "Tempo gasto: $tempo "
